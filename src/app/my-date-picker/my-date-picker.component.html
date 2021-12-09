@@ -1,0 +1,30 @@
+<div class="d-picker-wrapper">
+  <div class="d-picker-wrapper__header">
+    <span class="icon-close">&#10006;</span>
+  </div>
+  <div class="step">
+    <div class="step-title">
+      <span> Шаг </span>
+      <div class="step-number">1</div>
+    </div>
+    <div class="step-subtitle"> Выберите глубину данных: </div>
+  </div>
+
+  <div class="main">
+    <mat-radio-group class="example-radio-group" >
+      <mat-radio-button class="example-radio-button" *ngFor="let g of group" [value]="g.value">
+        {{g?.name}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+
+  <div class="step">
+    <div class="step-title">
+      <span> Шаг </span>
+      <div class="step-number">2</div>
+    </div>
+    <div class="step-subtitle"> Выберите способ отображения: </div>
+  </div>
+
+</div>

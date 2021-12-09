@@ -1,0 +1,58 @@
+.d-picker-wrapper {
+  width: 275px;
+  height: 440px;
+  border-radius: 4px;
+  background: #262936;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 15px;
+    height: 32px;
+
+    span {
+      color: #9FA4B2;
+      font-size: 12px;
+      cursor: pointer;
+    }
+  }
+
+  .step {
+    height: 68px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 20px;
+
+    &-title {
+      display: flex;
+      color: #fff;
+      margin-bottom: 12px;
+
+      span {
+        font-size: 14px;
+        line-height: 20px;
+        text-transform: uppercase;
+      }
+    }
+    &-number {
+      width: 20px;
+      height: 20px;
+      border: 1px solid #13AB53;
+      border-radius: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      line-height: 12px;
+      margin-left: 4px;
+    }
+    &-subtitle {
+      font-size: 14px;
+      line-height: 20px;
+      color: #BABFCE;
+    }
+  }
+}
