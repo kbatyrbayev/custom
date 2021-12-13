@@ -55,4 +55,135 @@
       color: #BABFCE;
     }
   }
+
+  &__footer {
+    height: 48px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 20px;
+    .accept {
+      background-color: transparent;
+      border: none;
+      font-size: 14px;
+      line-height: 20px;
+      color: #13AB53;
+      cursor: pointer;
+      height: fit-content;
+      &.invalid {
+        color: rgba(19, 171, 83, 0.3);
+      }
+    }
+  }
+
+}
+
+.main {
+  padding: 10px 20px;
+}
+
+::ng-deep {
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    .radio-button {
+      margin: 3px 0;
+      color: #fff;
+      .mat-radio-container {
+        height: 16px;
+        width: 16px;
+      }
+      .mat-radio-outer-circle {
+        border-color: #9FA4B2 !important;
+        height: 16px;
+        width: 16px;
+      }
+      .mat-radio-inner-circle {
+        background-color: #9FA4B2;
+        height: 16px;
+        width: 16px;
+      }
+      .mat-ripple-element {
+        background-color: transparent !important;
+      }
+    }
+  }
+}
+
+
+.display-type {
+  padding: 10px 20px;
+}
+
+::ng-deep {
+  .mat-select {
+    width: 186px !important;
+    height: 36px;
+    background: #262936;
+    border: 1px solid #53586D;
+    border-radius: 4px;
+    color: #fff;
+    .mat-select-trigger {
+      height: 100%;
+    }
+    .mat-select-value {
+      height: 100%;
+      vertical-align: middle;
+      padding-left: 20px;
+
+      .mat-select-placeholder,
+      .mat-select-value-text {
+        color: #fff;
+      }
+
+    }
+    .mat-select-arrow-wrapper {
+      padding-right: 10px;
+      .mat-select-arrow {
+        color: #fff;
+      }
+    }
+  }
+  .mat-select-panel {
+    margin-top: 36px;
+    margin-left: 16px;
+    width: 186px !important;
+    max-width: 186px !important;
+    min-width: 186px !important;
+    background: #262936;
+
+    .mat-option {
+      background: #262936;
+      color: #fff;
+      &.mat-selected {
+        background: #4c516a !important;
+      }
+      &:hover {
+        background: #262936;
+      }
+    }
+  }
+}
+
+.datepicker-field {
+  margin-bottom: 15px;
+  input {
+    width: 174px;
+    height: 36px;
+    background: #262936;
+    border: 1px solid #53586D;
+    border-radius: 4px;
+    color: #fff;
+    padding: 0 20px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #BABFCE;
+  }
+}
+
+::ng-deep {
+  .mat-button-wrapper {
+    svg {
+      color: #9FA4B2;
+    }
+  }
 }
