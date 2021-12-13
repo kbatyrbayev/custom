@@ -34,7 +34,6 @@ export class MyDatePickerComponent implements OnInit {
   }
 
   onRadioChange($event: MatRadioChange) {
-    console.log($event);
     switch($event.value) {
       case 'day': this.startview = 'multi-year'; break;
       case 'month': this.startview = 'year'; break;
