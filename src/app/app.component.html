@@ -1,1 +1,12 @@
-<app-my-date-picker></app-my-date-picker>
+<div class="container">
+  <mat-select
+      [formControl]="langControl"
+      (selectionChange)="onSelectChange($event)"
+      placeholder="Выбрать из списка"
+      disableRipple="true">
+      <mat-option *ngFor="let lang of langs" [value]="lang">
+        {{lang}}
+      </mat-option>
+  </mat-select>
+  <app-my-date-picker></app-my-date-picker>
+</div>

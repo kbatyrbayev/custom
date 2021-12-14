@@ -15,10 +15,10 @@ export class MyDatePickerComponent implements OnInit {
   dateControl = new FormControl();
 
   group = [
-    { name: 'Сегодня dd.mm.yyyy', value: 'day' },
-    { name: 'Месяц mm.yyyy', value: 'month' },
-    { name: 'Год yyyy', value: 'year' },
-    { name: 'Период dd.mm.yyyy - dd.mm.yyyy', value: 'period' },
+    { name: 'Сегодня', value: 'day', label: 'dd.mm.yyyy' },
+    { name: 'Месяц', value: 'month', label: 'mm.yyyy' },
+    { name: 'Год', value: 'year', label: 'yyyy' },
+    { name: 'Период', value: 'period', label: 'dd.mm.yyyy - dd.mm.yyyy' },
   ];
   displayTypes = [
     { name: 'День', value: 'day' },

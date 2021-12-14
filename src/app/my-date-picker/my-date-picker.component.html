@@ -4,23 +4,23 @@
   </div>
   <div class="step">
     <div class="step-title">
-      <span> Шаг </span>
+      <span> {{'DATEPICKER.STEP' | translate}} </span>
       <div class="step-number">1</div>
     </div>
-    <div class="step-subtitle"> Выберите глубину данных: </div>
+    <div class="step-subtitle"> {{'DATEPICKER.STEP1' | translate}} </div>
   </div>
 
   <div class="main">
     
     <div class="datepicker-field">
-      <input [matDatepicker]="picker" placeholder="Введите нужную дату" [formControl]="dateControl" (change)="onDateChange($event)">
+      <input [matDatepicker]="picker" placeholder="{{'DATEPICKER.PLACEHOLDER1' | translate}}" [formControl]="dateControl" (change)="onDateChange($event)">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker [startView]="startview"></mat-datepicker>
     </div>
 
     <mat-radio-group class="radio-group" [formControl]="radioControl" (change)="onRadioChange($event)">
       <mat-radio-button class="radio-button" *ngFor="let g of group" [value]="g.value">
-        {{g?.name}}
+        {{'DATEPICKER.'+g.value | uppercase | translate:{val: g.label} }}
       </mat-radio-button>
     </mat-radio-group>
   </div>
@@ -28,24 +28,24 @@
 
   <div class="step">
     <div class="step-title">
-      <span> Шаг </span>
+      <span> {{'DATEPICKER.STEP' | translate}} </span>
       <div class="step-number">2</div>
     </div>
-    <div class="step-subtitle"> Выберите способ отображения: </div>
+    <div class="step-subtitle"> {{'DATEPICKER.STEP2' | translate}} </div>
   </div>
   <div class="display-type">
     <mat-select
       [formControl]="displayTypeControl"
       (selectionChange)="onSelectChange($event)"
-      placeholder="Выбрать из списка"
+      placeholder="{{'DATEPICKER.PLACEHOLDER2' | translate}}"
       disableRipple="true"
       disableOptionCentering="true"
       panelClass="my-panel">
       <mat-option>
-        Не выбрано
+        {{'DATEPICKER.NONE' | translate}}
       </mat-option>
       <mat-option *ngFor="let d of displayTypes" [value]="d?.value">
-        {{d?.name}}
+        {{'DATEPICKER.'+d.value | uppercase | translate:{val:''} }}
       </mat-option>
     </mat-select>
   </div>
