@@ -8,13 +8,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { DateAdapter, MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
+import { DateAdapter, MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { MomentDateAdapter, MOMENT_DATE_FORMATS } from './moment-date-adapter';
+import { CustomDateAdapter, MOMENT_DATE_FORMATS } from './custom-date-adapter';
+import { DateTimeService } from './date-time.service';
+import { environment } from 'src/environments/environment';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -48,8 +50,15 @@ export function createTranslateLoader(http: HttpClient) {
     )
   ],
   providers: [
+    CustomDateAdapter,
+    DateTimeService,
+    { provide: DateAdapter, useClass: CustomDateAdapter, deps: [DateTimeService] },
+    // { provide: DateAdapter, useClass: CustomDateAdapter },
     { provide: MAT_DATE_FORMATS, useValue: MOMENT_DATE_FORMATS },
-    { provide: DateAdapter, useClass: MomentDateAdapter }
+    /* {
+      provide: MAT_DATE_FORMATS, deps: [DateTimeService],
+      useFactory: (service: any) => service.getFormat()
+    }, */
   ],
   bootstrap: [AppComponent]
 })

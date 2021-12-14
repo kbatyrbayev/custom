@@ -2,13 +2,15 @@ import { DateAdapter, MatDateFormats } from "@angular/material/core";
 import { isMoment, Moment } from "moment";
 import * as moment from "moment";
 import { environment } from "src/environments/environment";
+import { DateTimeService } from "./date-time.service";
+import { Injectable } from "@angular/core";
 
 export const MOMENT_DATE_FORMATS: MatDateFormats = {
   parse: {
-    dateInput: 'DD.MM.YYYY'
+    dateInput: 'MM.YYYY'
   },
   display: {
-    dateInput: 'DD.MM.YYYY',
+    dateInput: 'MM.YYYY',
     monthYearLabel: 'YYYY',
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MM Y'
@@ -20,10 +22,27 @@ for (let date = 1; date <= 31; date++) {
   dateNames.push(String(date));
 }
 
+@Injectable()
+export class CustomDateAdapter extends DateAdapter<Moment> {
 
-export class MomentDateAdapter extends DateAdapter<Moment> {
+  constructor(private dateTimeService: DateTimeService) {
+    super();
+  }
 
   private localeData = moment.localeData();
+
+  
+  format(date: Moment, displayFormat: any): string {
+    // console.log(date);
+    console.log(displayFormat);
+    
+    
+    if (date) {
+      return date.format(displayFormat);
+    }
+    return '';
+  }
+
 
   invalid(): Moment {
     return moment();
@@ -49,7 +68,6 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
     this.setLocale(localStorage.getItem('curLangMoment') || environment.defaultLang);
     switch (style) {
       case 'long':
-        console.log('yes', this.localeData.months());
         return this.localeData.months();
       case 'short':
         return this.localeData.monthsShort();
@@ -108,13 +126,6 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
       return m;
     }
     return null;
-  }
-
-  format(date: Moment, displayFormat: any): string {
-    if (date) {
-      return date.format(displayFormat);
-    }
-    return '';
   }
 
   addCalendarYears(date: Moment, years: number): Moment {
