@@ -13,9 +13,12 @@
   <div class="main">
     
     <div class="datepicker-field">
-      <input [matDatepicker]="picker" placeholder="{{'DATEPICKER.PLACEHOLDER1' | translate}}" [formControl]="dateControl" (change)="onDateChange($event)">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker [startView]="startview"></mat-datepicker>
+      <ng-container [ngSwitch]="radioControl?.value">
+        <app-regular-picker *ngSwitchCase="'day'"></app-regular-picker>
+        <app-month-picker *ngSwitchCase="'month'"></app-month-picker>
+        <app-year-picker *ngSwitchCase="'year'"></app-year-picker>
+        <app-period-picker *ngSwitchCase="'period'"></app-period-picker>
+      </ng-container>
     </div>
 
     <mat-radio-group class="radio-group" [formControl]="radioControl" (change)="onRadioChange($event)">

@@ -166,18 +166,6 @@
 
 .datepicker-field {
   margin-bottom: 15px;
-  input {
-    width: 174px;
-    height: 36px;
-    background: #262936;
-    border: 1px solid #53586D;
-    border-radius: 4px;
-    color: #fff;
-    padding: 0 20px;
-    font-size: 12px;
-    line-height: 16px;
-    color: #BABFCE;
-  }
 }
 
 ::ng-deep {
@@ -187,3 +175,5 @@
     }
   }
 }
+
+

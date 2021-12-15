@@ -35,7 +35,7 @@ const MOMENT_DATE_FORMATS: MatDateFormats = {
 })
 export class MyDatePickerComponent implements OnInit {
 
-  radioControl = new FormControl('day');
+  radioControl = new FormControl('period');
   displayTypeControl = new FormControl();
   dateControl = new FormControl(moment());
 

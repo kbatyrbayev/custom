@@ -16,6 +16,7 @@ export class AppComponent {
 
   constructor(private translate: TranslateService) {
     this.translate.setDefaultLang(environment.defaultLang);
+    localStorage.setItem('curLangMoment', environment.defaultLang);
   }
 
   onSelectChange($event: MatSelectChange) {

@@ -1,0 +1,37 @@
+input {
+  &.mat-datepicker-input {
+    width: 174px;
+    height: 36px;
+    background: #262936;
+    border: 1px solid #53586D;
+    border-radius: 4px;
+    padding: 0 20px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #BABFCE;
+  }
+}
+
+.period-picker {
+  display: flex;
+  align-items: center;
+  .mat-date-range-input {
+    width: 174px;
+    height: 36px;
+    background: #262936;
+    border: 1px solid #53586D;
+    border-radius: 4px;
+    padding: 0 9px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #BABFCE;
+  }
+}
+::ng-deep {
+  .mat-date-range-input-container {
+    height: 100%;
+  }
+  .mat-date-range-input-separator {
+    color: #BABFCE;
+  }
+}

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { MyDatePickerComponent } from './my-date-picker/my-date-picker.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -8,15 +7,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { DateAdapter, MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { CustomDateAdapter, MOMENT_DATE_FORMATS } from './custom-date-adapter';
-import { DateTimeService } from './date-time.service';
-import { environment } from 'src/environments/environment';
+import { MonthPickerComponent } from './my-date-picker/date-picker-types/month-picker.component';
+import { YearPickerComponent } from './my-date-picker/date-picker-types/year-picker.component';
+import { RegularPickerComponent } from './my-date-picker/date-picker-types/regular-picker.component';
+import { PeriodPickerComponent } from './my-date-picker/date-picker-types/period-picker.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -25,7 +25,11 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    MyDatePickerComponent
+    MyDatePickerComponent,
+    MonthPickerComponent,
+    YearPickerComponent,
+    RegularPickerComponent,
+    PeriodPickerComponent
   ],
   imports: [
     BrowserModule,
@@ -49,17 +53,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     )
   ],
-  providers: [
-    CustomDateAdapter,
-    DateTimeService,
-    { provide: DateAdapter, useClass: CustomDateAdapter, deps: [DateTimeService] },
-    // { provide: DateAdapter, useClass: CustomDateAdapter },
-    { provide: MAT_DATE_FORMATS, useValue: MOMENT_DATE_FORMATS },
-    /* {
-      provide: MAT_DATE_FORMATS, deps: [DateTimeService],
-      useFactory: (service: any) => service.getFormat()
-    }, */
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

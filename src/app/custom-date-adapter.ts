@@ -5,18 +5,6 @@ import { environment } from "src/environments/environment";
 import { DateTimeService } from "./date-time.service";
 import { Injectable } from "@angular/core";
 
-export const MOMENT_DATE_FORMATS: MatDateFormats = {
-  parse: {
-    dateInput: 'MM.YYYY'
-  },
-  display: {
-    dateInput: 'MM.YYYY',
-    monthYearLabel: 'YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MM Y'
-  }
-};
-
 const dateNames: string[] = [];
 for (let date = 1; date <= 31; date++) {
   dateNames.push(String(date));
