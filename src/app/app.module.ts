@@ -17,6 +17,7 @@ import { MonthPickerComponent } from './my-date-picker/date-picker-types/month-p
 import { YearPickerComponent } from './my-date-picker/date-picker-types/year-picker.component';
 import { RegularPickerComponent } from './my-date-picker/date-picker-types/regular-picker.component';
 import { PeriodPickerComponent } from './my-date-picker/date-picker-types/period-picker.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -43,6 +44,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
+    MatMenuModule,
     TranslateModule.forRoot(
       {
         loader: {

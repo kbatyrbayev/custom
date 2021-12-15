@@ -1,9 +1,8 @@
-import { DateAdapter, MatDateFormats } from "@angular/material/core";
-import { isMoment, Moment } from "moment";
-import * as moment from "moment";
-import { environment } from "src/environments/environment";
-import { DateTimeService } from "./date-time.service";
 import { Injectable } from "@angular/core";
+import { DateAdapter } from "@angular/material/core";
+import { isMoment, Moment } from "moment";
+import { environment } from "src/environments/environment";
+import * as moment from "moment";
 
 const dateNames: string[] = [];
 for (let date = 1; date <= 31; date++) {
@@ -13,24 +12,14 @@ for (let date = 1; date <= 31; date++) {
 @Injectable()
 export class CustomDateAdapter extends DateAdapter<Moment> {
 
-  constructor(private dateTimeService: DateTimeService) {
-    super();
-  }
-
   private localeData = moment.localeData();
-
   
   format(date: Moment, displayFormat: any): string {
-    // console.log(date);
-    console.log(displayFormat);
-    
-    
     if (date) {
       return date.format(displayFormat);
     }
     return '';
   }
-
 
   invalid(): Moment {
     return moment();

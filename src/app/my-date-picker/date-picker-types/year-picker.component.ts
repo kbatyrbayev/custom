@@ -22,7 +22,7 @@ export const YEAR_MODE_FORMATS = {
   template: `
     <input [matDatepicker]="picker" placeholder="{{'DATEPICKER.PLACEHOLDER1' | translate}}" [formControl]="date" (change)="onDateChange($event)">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker startView="multi-year" (yearSelected)="chosenYearHandler($event, picker)"></mat-datepicker>
+    <mat-datepicker #picker startView="multi-year"  (yearSelected)="chosenYearHandler($event, picker)"></mat-datepicker>
   `,
   styleUrls: ['./custom-style.scss'],
   providers: [
