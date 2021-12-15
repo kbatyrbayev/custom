@@ -14,10 +14,8 @@
 
   &__header {
     display: flex;
-    align-items: center;
     justify-content: flex-end;
-    padding: 0 15px;
-    height: 32px;
+    padding: 14px 14px 6px;
 
     span {
       color: #9FA4B2;
@@ -117,7 +115,7 @@
 
 
 .display-type {
-  padding: 10px 20px;
+  padding: 5px 20px;
 }
 
 ::ng-deep {

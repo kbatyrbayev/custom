@@ -8,5 +8,6 @@
         {{lang}}
       </mat-option>
   </mat-select>
+  <app-my-date-picker [range]="range" (outputDate)="getDate($event)"></app-my-date-picker>
   <app-my-date-picker></app-my-date-picker>
 </div>
