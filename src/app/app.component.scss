@@ -1,3 +1,53 @@
 .container {
   padding: 20px;
 }
+
+::ng-deep {
+  .mat-select {
+    width: 186px !important;
+    height: 36px;
+    background: #262936;
+    border: 1px solid #53586D;
+    border-radius: 4px;
+    color: #fff;
+    .mat-select-trigger {
+      height: 100%;
+    }
+    .mat-select-value {
+      height: 100%;
+      vertical-align: middle;
+      padding-left: 20px;
+
+      .mat-select-placeholder,
+      .mat-select-value-text {
+        color: #fff;
+      }
+
+    }
+    .mat-select-arrow-wrapper {
+      padding-right: 10px;
+      .mat-select-arrow {
+        color: #fff;
+      }
+    }
+  }
+  .mat-select-panel {
+    margin-top: 36px;
+    margin-left: 16px;
+    width: 186px !important;
+    max-width: 186px !important;
+    min-width: 186px !important;
+    background: #262936;
+
+    .mat-option {
+      background: #262936;
+      color: #fff;
+      &.mat-selected {
+        background: #4c516a !important;
+      }
+      &:hover {
+        background: #262936;
+      }
+    }
+  }
+}

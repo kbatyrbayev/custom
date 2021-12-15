@@ -1,9 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatRadioChange } from '@angular/material/radio';
 import { MatSelectChange } from '@angular/material/select';
 import * as moment from 'moment';
+import { TotalDatePickerComponent } from './total-date-picker/total-date-picker.component';
 @Component({
   selector: 'app-my-date-picker',
   templateUrl: './my-date-picker.component.html',
@@ -14,28 +16,12 @@ export class MyDatePickerComponent implements OnInit {
   @Input() range?: IMyDateRange;
   @Output() outputDate = new EventEmitter<IMyDateRange>();
 
-  radioControl = new FormControl('day');
-  displayTypeControl = new FormControl();
+  
   dateControl = new FormControl(moment());
   startDate?: string;
   endDate?: string;
 
-  group = [
-    { name: 'Сегодня', value: 'day', label: 'dd.mm.yyyy' },
-    { name: 'Месяц', value: 'month', label: 'mm.yyyy' },
-    { name: 'Год', value: 'year', label: 'yyyy' },
-    { name: 'Период', value: 'period', label: 'dd.mm.yyyy - dd.mm.yyyy' },
-  ];
-
-  displayTypes = [
-    { name: 'День', value: 'day' },
-    { name: 'Месяц', value: 'month' },
-    { name: 'Год', value: 'year' },
-  ];
-
-  @ViewChild('matMenuTrigger') matMenuTrigger?: MatMenuTrigger;
-
-  constructor() {
+  constructor(public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -48,29 +34,31 @@ export class MyDatePickerComponent implements OnInit {
     }
   }
 
-  regularDate?: string;
-  getRegularPicker($event: moment.Moment) {
-    this.regularDate = $event.format('DD.MM.YYYY');
-  }
-
-  apply() {
-    this.range!.start = this.regularDate!;
-    this.outputDate.emit(this.range);
-    this.matMenuTrigger?.closeMenu();
-  }
-
-  close() {
-    this.matMenuTrigger?.closeMenu();
-  }
-
-  onRadioChange($event: MatRadioChange) {
-    console.log($event);
+  openCalendar($event: MouseEvent) {
+    const dialogHeight = 440;
+    const dialogWidth = 275;
+    const target: ElementRef = new ElementRef($event.currentTarget);
+    const rect = target.nativeElement.getBoundingClientRect();
+    let top = rect.bottom;
+    let left = rect.left;
     
+    if (rect.left+dialogWidth > window.innerWidth) {
+      left = rect.right - dialogWidth;
+    }
+    if (rect.bottom+dialogHeight > window.innerHeight) {
+      top = rect.bottom - (rect.bottom + dialogHeight - window.innerHeight) - 10;
+    }
+    
+    this.dialog.open(TotalDatePickerComponent, {
+      position: {
+        left: `${left}px`,
+        top: `${top}px`,
+      }
+    });
   }
 
-  onSelectChange($event: MatSelectChange) {
-    console.log($event);
-  }
+  
+
 
   onDateChange($event: any) {
     console.log($event);

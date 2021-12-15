@@ -1,0 +1,55 @@
+<div class="d-picker-wrapper">
+  <div class="d-picker-wrapper__header">
+    <span class="icon-close" (click)="close()">&#10006;</span>
+  </div>
+  <div class="step">
+    <div class="step-title">
+      <span> {{'DATEPICKER.STEP' | translate}} </span>
+      <div class="step-number">1</div>
+    </div>
+    <div class="step-subtitle"> {{'DATEPICKER.STEP1' | translate}} </div>
+  </div>
+  <div class="main">
+    
+    <div class="datepicker-field">
+      <ng-container [ngSwitch]="radioControl?.value">
+        <app-regular-picker *ngSwitchCase="'day'" [date]="range?.start" (selectedDate)="getRegularPicker($event)"></app-regular-picker>
+        <app-month-picker *ngSwitchCase="'month'"></app-month-picker>
+        <app-year-picker *ngSwitchCase="'year'"></app-year-picker>
+        <app-period-picker *ngSwitchCase="'period'"></app-period-picker>
+      </ng-container>
+    </div>
+
+    <mat-radio-group class="radio-group" [formControl]="radioControl" (change)="onRadioChange($event)">
+      <mat-radio-button class="radio-button" *ngFor="let g of group" [value]="g.value">
+        {{'DATEPICKER.'+g.value | uppercase | translate:{val: g.label} }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="step">
+    <div class="step-title">
+      <span> {{'DATEPICKER.STEP' | translate}} </span>
+      <div class="step-number">2</div>
+    </div>
+    <div class="step-subtitle"> {{'DATEPICKER.STEP2' | translate}} </div>
+  </div>
+  <div class="display-type">
+    <mat-select
+      [formControl]="displayTypeControl"
+      (selectionChange)="onSelectChange($event)"
+      placeholder="{{'DATEPICKER.PLACEHOLDER2' | translate}}"
+      disableRipple="true"
+      disableOptionCentering="true"
+      panelClass="my-panel">
+      <mat-option>
+        {{'DATEPICKER.NONE' | translate}}
+      </mat-option>
+      <mat-option *ngFor="let d of displayTypes" [value]="d?.value">
+        {{'DATEPICKER.'+d.value | uppercase | translate:{val:''} }}
+      </mat-option>
+    </mat-select>
+  </div>
+  <div class="d-picker-wrapper__footer">
+    <button class="accept" (click)="apply()">Применить</button>
+  </div>
+</div>
