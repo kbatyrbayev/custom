@@ -51,7 +51,8 @@ export class TotalDatePickerComponent implements OnInit {
   apply() {
     const res:ITotalDateClose = {
       range: this.data.range,
-      radio: this.radioControl.value
+      radio: this.radioControl.value,
+      display: this.displayTypeControl.value
     };
     this.dialogRef?.close(res);
   }
@@ -65,6 +66,8 @@ export class TotalDatePickerComponent implements OnInit {
 export interface ITotalDateClose {
   range: FormGroup;
   radio: TotalRadioType;
+  display: TotalDisplayType;
 }
 
-export type TotalRadioType = 'day' | 'month' | 'year' | 'period';
+export type TotalRadioType = TotalDisplayType | 'period';
+export type TotalDisplayType = 'day' | 'month' | 'year';

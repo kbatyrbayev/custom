@@ -4,7 +4,7 @@ import { MatSelectChange } from '@angular/material/select';
 import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment';
 import { environment } from 'src/environments/environment';
-import { IMyDateRange } from './my-date-picker/my-date-picker.component';
+import { IMyDatePickerOutput, IMyDateRange } from './my-date-picker/my-date-picker.component';
 
 @Component({
   selector: 'app-root',
@@ -31,8 +31,8 @@ export class AppComponent {
     localStorage.setItem('curLangMoment', $event.value);
   }
 
-  getDate($event: IMyDateRange) {
-    console.log($event, 'get date');
-    
+  getDate($event: IMyDatePickerOutput) {
+    this.range = $event.range;
+    console.log($event);
   }
 }

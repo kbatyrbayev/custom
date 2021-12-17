@@ -10,5 +10,8 @@
   </mat-select>
   <app-my-date-picker [range]="range" (outputDate)="getDate($event)"></app-my-date-picker>
   <!-- <app-my-date-picker></app-my-date-picker> -->
-  <div class="rect"></div>
+  Selected date:
+  <code>
+    {{range | showDatePicker:'period'}}
+  </code>
 </div>

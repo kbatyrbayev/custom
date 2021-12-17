@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ITotalDateClose, TotalDatePickerComponent, TotalRadioType } from './total-date-picker/total-date-picker.component';
+import { ITotalDateClose, TotalDatePickerComponent, TotalDisplayType, TotalRadioType } from './total-date-picker/total-date-picker.component';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
@@ -11,7 +11,7 @@ import * as moment from 'moment';
 export class MyDatePickerComponent implements OnInit {
 
   @Input() range?: IMyDateRange;
-  @Output() outputDate = new EventEmitter<IMyDateRange>();
+  @Output() outputDate = new EventEmitter<IMyDatePickerOutput>();
 
   myRange = new FormGroup({
     start: new FormControl(),
@@ -37,8 +37,6 @@ export class MyDatePickerComponent implements OnInit {
     }
     this.myRange.setValue(this.range);
     this.oldRange?.setValue(this.range);
-    console.log(this.oldRange?.value);
-    
   }
 
   openCalendar($event: MouseEvent) {
@@ -69,6 +67,11 @@ export class MyDatePickerComponent implements OnInit {
         this.radio = res.radio;
         this.oldRange.setValue(res.range.value);
         this.oldRadio = res.radio;
+        this.outputDate.emit({
+          range: res.range.value,
+          radio: res.radio,
+          display: res.display
+        });
       } else {
         this.myRange.setValue(this.oldRange?.value);
         this.radio = this.oldRadio;
@@ -76,13 +79,15 @@ export class MyDatePickerComponent implements OnInit {
     });
   }
 
-  onDateChange($event: any) {
-    console.log($event);
-  }
-
 }
 
 export interface IMyDateRange {
   start: moment.Moment;
   end: moment.Moment;
+}
+
+export interface IMyDatePickerOutput {
+  range: IMyDateRange;
+  radio: TotalRadioType;
+  display: TotalDisplayType;
 }
