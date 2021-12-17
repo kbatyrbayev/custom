@@ -13,14 +13,14 @@
     
     <div class="datepicker-field">
       <ng-container [ngSwitch]="radioControl?.value">
-        <app-regular-picker *ngSwitchCase="'day'" [date]="range?.start" (selectedDate)="getRegularPicker($event)"></app-regular-picker>
-        <app-month-picker *ngSwitchCase="'month'"></app-month-picker>
-        <app-year-picker *ngSwitchCase="'year'"></app-year-picker>
-        <app-period-picker *ngSwitchCase="'period'"></app-period-picker>
+        <app-period-picker *ngSwitchCase="'period'" [range]="data.range"></app-period-picker>
+        <app-regular-picker *ngSwitchCase="'day'" [date]="start"></app-regular-picker>
+        <app-month-picker *ngSwitchCase="'month'" [date]="start"></app-month-picker>
+        <app-year-picker *ngSwitchCase="'year'" [date]="start"></app-year-picker>
       </ng-container>
     </div>
 
-    <mat-radio-group class="radio-group" [formControl]="radioControl" (change)="onRadioChange($event)">
+    <mat-radio-group class="radio-group" [formControl]="radioControl">
       <mat-radio-button class="radio-button" *ngFor="let g of group" [value]="g.value">
         {{'DATEPICKER.'+g.value | uppercase | translate:{val: g.label} }}
       </mat-radio-button>
@@ -36,7 +36,6 @@
   <div class="display-type">
     <mat-select
       [formControl]="displayTypeControl"
-      (selectionChange)="onSelectChange($event)"
       placeholder="{{'DATEPICKER.PLACEHOLDER2' | translate}}"
       disableRipple="true"
       disableOptionCentering="true"

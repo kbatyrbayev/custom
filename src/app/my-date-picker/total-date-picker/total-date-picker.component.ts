@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatRadioChange } from '@angular/material/radio';
 import { MatSelectChange } from '@angular/material/select';
@@ -13,7 +13,6 @@ import { IMyDateRange } from '../my-date-picker.component';
 export class TotalDatePickerComponent implements OnInit {
 
   @Input() range?: IMyDateRange;
-
   
   group = [
     { name: 'Сегодня', value: 'day', label: 'dd.mm.yyyy' },
@@ -28,43 +27,44 @@ export class TotalDatePickerComponent implements OnInit {
     { name: 'Год', value: 'year' },
   ];
 
-
-
-  radioControl = new FormControl('day');
-  get radioValue() {
-    return this.radioControl.value;
-  }
-  displayTypeControl = new FormControl();
+  radioControl = new FormControl('period');
+  displayTypeControl = new FormControl('day');
 
   regularDate?: string;
 
   constructor(public dialogRef: MatDialogRef<TotalDatePickerComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) { }
+              @Inject(MAT_DIALOG_DATA) public data: {range: FormGroup, radio: TotalRadioType}) {
+    this.radioControl.setValue(this.data.radio);
+  }
 
   ngOnInit(): void {
+  }
+
+  get start() {
+    return this.data.range.get('start') as FormControl;
   }
 
   getRegularPicker($event: moment.Moment) {
     this.regularDate = $event.format('DD.MM.YYYY');
   }
   
-  onRadioChange($event: MatRadioChange) {
-    console.log($event);
-  }
-
-  onSelectChange($event: MatSelectChange) {
-    console.log($event);
-  }
-  
-
   apply() {
-    this.range!.start = this.regularDate!;
-    this.dialogRef?.close();
+    const res:ITotalDateClose = {
+      range: this.data.range,
+      radio: this.radioControl.value
+    };
+    this.dialogRef?.close(res);
   }
-  
 
   close() {
     this.dialogRef?.close();
   }
 
 }
+
+export interface ITotalDateClose {
+  range: FormGroup;
+  radio: TotalRadioType;
+}
+
+export type TotalRadioType = 'day' | 'month' | 'year' | 'period';

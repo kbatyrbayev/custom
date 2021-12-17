@@ -1,9 +1,9 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepicker } from '@angular/material/datepicker';
-import * as moment from 'moment';
 import { CustomDateAdapter } from 'src/app/custom-date-adapter';
+import * as moment from 'moment';
 
 export const MONTH_MODE_FORMATS = {
   parse: {
@@ -20,7 +20,7 @@ export const MONTH_MODE_FORMATS = {
 @Component({
   selector: 'app-month-picker',
   template: `
-    <input [matDatepicker]="picker" placeholder="{{'DATEPICKER.PLACEHOLDER1' | translate}}" [formControl]="date" (change)="onDateChange($event)">
+    <input [matDatepicker]="picker" placeholder="{{'DATEPICKER.PLACEHOLDER1' | translate}}" [formControl]="date">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker startView="multi-year" (yearSelected)="chosenYearHandler($event)"
                   (monthSelected)="chosenMonthHandler($event, picker)"></mat-datepicker>
@@ -34,15 +34,11 @@ export const MONTH_MODE_FORMATS = {
 })
 export class MonthPickerComponent implements OnInit {
 
-  date = new FormControl(moment());
+  @Input() date!: FormControl;
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  onDateChange($event: any) {
-    console.log($event);
   }
 
   chosenYearHandler(normalizedYear: moment.Moment) {

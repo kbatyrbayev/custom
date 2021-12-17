@@ -1,11 +1,8 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { MatMenuTrigger } from '@angular/material/menu';
-import { MatRadioChange } from '@angular/material/radio';
-import { MatSelectChange } from '@angular/material/select';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ITotalDateClose, TotalDatePickerComponent, TotalRadioType } from './total-date-picker/total-date-picker.component';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
-import { TotalDatePickerComponent } from './total-date-picker/total-date-picker.component';
 @Component({
   selector: 'app-my-date-picker',
   templateUrl: './my-date-picker.component.html',
@@ -16,25 +13,36 @@ export class MyDatePickerComponent implements OnInit {
   @Input() range?: IMyDateRange;
   @Output() outputDate = new EventEmitter<IMyDateRange>();
 
-  
-  dateControl = new FormControl(moment());
-  startDate?: string;
-  endDate?: string;
+  myRange = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
+  oldRange= new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });;
+  radio: TotalRadioType = 'period';
+  oldRadio: TotalRadioType = 'period';
 
   constructor(public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    // Если период не задан через @Input()
+    // Если период не задан через @Input(), то задаем период текущий день
     if (!this.range) {
       this.range = {
-        start: moment().format('DD.MM.YYYY'),
-        end: moment().format('DD.MM.YYYY'),
+        start: moment(),
+        end: moment(),
       }
     }
+    this.myRange.setValue(this.range);
+    this.oldRange?.setValue(this.range);
+    console.log(this.oldRange?.value);
+    
   }
 
   openCalendar($event: MouseEvent) {
+    // calculate position of mat dialog
     const dialogHeight = 440;
     const dialogWidth = 275;
     const target: ElementRef = new ElementRef($event.currentTarget);
@@ -53,12 +61,20 @@ export class MyDatePickerComponent implements OnInit {
       position: {
         left: `${left}px`,
         top: `${top}px`,
+      },
+      data: { range: this.myRange, radio: this.radio }
+    }).afterClosed().subscribe((res: ITotalDateClose) => {
+      if (res) {
+        this.myRange.setValue(res.range.value);
+        this.radio = res.radio;
+        this.oldRange.setValue(res.range.value);
+        this.oldRadio = res.radio;
+      } else {
+        this.myRange.setValue(this.oldRange?.value);
+        this.radio = this.oldRadio;
       }
     });
   }
-
-  
-
 
   onDateChange($event: any) {
     console.log($event);
@@ -67,6 +83,6 @@ export class MyDatePickerComponent implements OnInit {
 }
 
 export interface IMyDateRange {
-  start: string;
-  end: string;
+  start: moment.Moment;
+  end: moment.Moment;
 }

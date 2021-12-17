@@ -1,24 +1,29 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as moment from 'moment';
 import { IMyDateRange } from './my-date-picker.component';
+import { TotalRadioType } from './total-date-picker/total-date-picker.component';
+import * as moment from 'moment';
 
 @Pipe({
   name: 'showDatePicker',
 })
 export class ShowDatePickerPipe implements PipeTransform {
 
-  transform(value: IMyDateRange|undefined, radioType?: string): unknown {
-    switch (radioType) {
-      case 'day': return value?.start;
-      case 'month': return this.transformMoment(value?.start).format('MM.YYYY');
-      case 'year': return this.transformMoment(value?.start).format('YYYY');
-      case 'period': return value?.start + '-' + value?.end;
-      default: return value?.start + '-' + value?.end;
+  transform(value: IMyDateRange|undefined, radio: TotalRadioType): unknown {
+    switch (radio) {
+      case 'day':
+        return this.transformMoment(value?.start);
+      case 'month':
+        return this.transformMoment(value?.start, 'MM.YYYY');
+      case 'year':
+        return this.transformMoment(value?.start, 'YYYY');
+      default: 
+        return `${this.transformMoment(value?.start)}-${this.transformMoment(value?.end)}`;
     }
   }
 
-  transformMoment(value: string|undefined) {
-    return moment(value, 'DD.MM.YYYY');
+  transformMoment(value: moment.Moment|undefined, format = 'DD.MM.YYYY') {
+    if (value) return moment(value, 'DD.MM.YYYY').format(format);
+    return '';
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as moment from 'moment';
@@ -37,10 +37,7 @@ export const YEAR_MODE_FORMATS = {
 })
 export class PeriodPickerComponent implements OnInit {
 
-  range = new FormGroup({
-    start: new FormControl(moment()),
-    end: new FormControl(moment())
-  });
+  @Input() range!: FormGroup;
 
   constructor() { }
 

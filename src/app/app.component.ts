@@ -17,8 +17,8 @@ export class AppComponent {
   langControl = new FormControl(environment.defaultLang);
   langs = [ 'kk', 'ru', 'en' ];
   range: IMyDateRange = {
-    start: moment().startOf('month').format('DD.MM.YYYY'),
-    end: moment().format('DD.MM.YYYY'),
+    start: moment().startOf('month'),
+    end: moment(),
   };
 
   constructor(private translate: TranslateService) {
