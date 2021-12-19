@@ -3,7 +3,7 @@ import { TotalDatePickerComponent } from './total-date-picker/total-date-picker.
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DefaultDatePickerComponent } from './default-date-picker/default-date-picker.component';
-import { IMyDatePickerOutput, IMyDateRange, ITotalDateClose, TotalRadioType } from './date-picker-interface';
+import { IMyDatePickerOutput, IMyDateRange, ITotalDateClose, TotalRadioType } from './date-picker.interface';
 import * as moment from 'moment';
 @Component({
   selector: 'app-my-date-picker',

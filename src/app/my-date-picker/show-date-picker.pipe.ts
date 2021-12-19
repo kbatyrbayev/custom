@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import * as moment from 'moment';
-import { IMyDateRange, TotalRadioType } from './date-picker-interface';
+import { IMyDateRange, TotalRadioType } from './date-picker.interface';
 
 @Pipe({
   name: 'showDatePicker',
