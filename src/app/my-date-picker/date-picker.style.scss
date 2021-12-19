@@ -100,6 +100,12 @@
         height: 16px;
         width: 16px;
       }
+      .mat-radio-ripple {
+        height: 16px;
+        width: 16px;
+        left: calc(50% - 16px);
+        top: calc(50% - 16px);
+      }
       .mat-ripple-element {
         background-color: transparent !important;
       }
