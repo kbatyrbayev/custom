@@ -8,3 +8,14 @@ export interface ITotalDateClose {
   radio: TotalRadioType;
   display?: TotalDisplayType;
 }
+
+export interface IMyDateRange {
+  start: moment.Moment;
+  end: moment.Moment;
+}
+
+export interface IMyDatePickerOutput {
+  range: IMyDateRange;
+  radio: TotalRadioType;
+  display: TotalDisplayType;
+}

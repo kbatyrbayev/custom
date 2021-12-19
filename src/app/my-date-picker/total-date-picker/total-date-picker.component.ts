@@ -1,8 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ITotalDateClose, TotalRadioType } from '../date-picker-interface';
-import { IMyDateRange } from '../my-date-picker.component';
+import { IMyDateRange, ITotalDateClose, TotalRadioType } from '../date-picker-interface';
 
 @Component({
   selector: 'app-total-date-picker',

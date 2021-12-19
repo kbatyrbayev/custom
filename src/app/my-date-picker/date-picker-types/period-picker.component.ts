@@ -1,9 +1,7 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import * as moment from 'moment';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { CustomDateAdapter } from 'src/app/custom-date-adapter';
-
 
 export const YEAR_MODE_FORMATS = {
   parse: {
@@ -43,10 +41,5 @@ export class PeriodPickerComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  onDateChange($event: any) {
-    console.log($event);
-  }
-
 
 }

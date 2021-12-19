@@ -4,7 +4,7 @@ import { MatSelectChange } from '@angular/material/select';
 import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment';
 import { environment } from 'src/environments/environment';
-import { IMyDatePickerOutput, IMyDateRange } from './my-date-picker/my-date-picker.component';
+import { IMyDatePickerOutput, IMyDateRange } from './my-date-picker/date-picker-interface';
 
 @Component({
   selector: 'app-root',

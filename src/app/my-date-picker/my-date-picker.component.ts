@@ -2,9 +2,9 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@ang
 import { TotalDatePickerComponent } from './total-date-picker/total-date-picker.component';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import * as moment from 'moment';
 import { DefaultDatePickerComponent } from './default-date-picker/default-date-picker.component';
-import { ITotalDateClose, TotalDisplayType, TotalRadioType } from './date-picker-interface';
+import { IMyDatePickerOutput, IMyDateRange, ITotalDateClose, TotalRadioType } from './date-picker-interface';
+import * as moment from 'moment';
 @Component({
   selector: 'app-my-date-picker',
   templateUrl: './my-date-picker.component.html',
@@ -84,15 +84,4 @@ export class MyDatePickerComponent implements OnInit {
     });
   }
 
-}
-
-export interface IMyDateRange {
-  start: moment.Moment;
-  end: moment.Moment;
-}
-
-export interface IMyDatePickerOutput {
-  range: IMyDateRange;
-  radio: TotalRadioType;
-  display: TotalDisplayType;
 }
