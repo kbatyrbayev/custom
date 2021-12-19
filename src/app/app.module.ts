@@ -21,6 +21,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ShowDatePickerPipe } from './my-date-picker/show-date-picker.pipe';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TotalDatePickerComponent } from './my-date-picker/total-date-picker/total-date-picker.component';
+import { DefaultDatePickerComponent } from './my-date-picker/default-date-picker/default-date-picker.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -35,7 +36,8 @@ export function createTranslateLoader(http: HttpClient) {
     RegularPickerComponent,
     PeriodPickerComponent,
     ShowDatePickerPipe,
-    TotalDatePickerComponent
+    TotalDatePickerComponent,
+    DefaultDatePickerComponent
   ],
   imports: [
     BrowserModule,

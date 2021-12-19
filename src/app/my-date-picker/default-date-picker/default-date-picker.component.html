@@ -1,0 +1,33 @@
+<div class="d-picker-wrapper">
+  <div class="d-picker-wrapper__header">
+    <span class="icon-close" (click)="close()">&#10006;</span>
+  </div>
+  <div class="step">
+    <div class="step-title">
+      <span> {{'DATEPICKER.STEP' | translate}} </span>
+      <div class="step-number">1</div>
+    </div>
+    <div class="step-subtitle"> {{'DATEPICKER.STEP1' | translate}} </div>
+  </div>
+  <div class="main">
+    
+    <div class="datepicker-field">
+      <ng-container [ngSwitch]="radioControl?.value">
+        <app-period-picker *ngSwitchCase="'period'" [range]="data.range"></app-period-picker>
+        <app-regular-picker *ngSwitchCase="'day'" [date]="start"></app-regular-picker>
+        <app-month-picker *ngSwitchCase="'month'" [date]="start"></app-month-picker>
+        <app-year-picker *ngSwitchCase="'year'" [date]="start"></app-year-picker>
+      </ng-container>
+    </div>
+
+    <mat-radio-group class="radio-group" [formControl]="radioControl">
+      <mat-radio-button class="radio-button" *ngFor="let g of group" [value]="g.value">
+        {{'DATEPICKER.'+g.value | uppercase | translate:{val: g.label} }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="d-picker-wrapper__footer">
+    <button class="accept" (click)="apply()">Применить</button>
+  </div>
+</div>

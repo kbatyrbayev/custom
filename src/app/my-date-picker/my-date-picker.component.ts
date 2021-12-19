@@ -1,8 +1,10 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ITotalDateClose, TotalDatePickerComponent, TotalDisplayType, TotalRadioType } from './total-date-picker/total-date-picker.component';
+import { TotalDatePickerComponent } from './total-date-picker/total-date-picker.component';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
+import { DefaultDatePickerComponent } from './default-date-picker/default-date-picker.component';
+import { ITotalDateClose, TotalDisplayType, TotalRadioType } from './date-picker-interface';
 @Component({
   selector: 'app-my-date-picker',
   templateUrl: './my-date-picker.component.html',
@@ -10,6 +12,7 @@ import * as moment from 'moment';
 })
 export class MyDatePickerComponent implements OnInit {
 
+  @Input() pickerType: 'default' | 'total' = 'default';
   @Input() range?: IMyDateRange;
   @Output() outputDate = new EventEmitter<IMyDatePickerOutput>();
 
@@ -54,8 +57,10 @@ export class MyDatePickerComponent implements OnInit {
     if (rect.bottom+dialogHeight > window.innerHeight) {
       top = rect.bottom - (rect.bottom + dialogHeight - window.innerHeight) - 10;
     }
+
+    const component = this.pickerType === 'total' ? TotalDatePickerComponent : DefaultDatePickerComponent;
     
-    this.dialog.open(TotalDatePickerComponent, {
+    this.dialog.open(component, {
       position: {
         left: `${left}px`,
         top: `${top}px`,
@@ -70,7 +75,7 @@ export class MyDatePickerComponent implements OnInit {
         this.outputDate.emit({
           range: res.range.value,
           radio: res.radio,
-          display: res.display
+          display: res.display!
         });
       } else {
         this.myRange.setValue(this.oldRange?.value);
