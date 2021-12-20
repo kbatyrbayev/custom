@@ -68,6 +68,21 @@ export class MyDatePickerComponent implements OnInit {
       data: { range: this.myRange, radio: this.radio }
     }).afterClosed().subscribe((res: ITotalDateClose) => {
       if (res) {
+        const start = res.range.get('start');
+        const end = res.range.get('end');
+        switch (res.radio) {
+          case 'day':
+            end?.setValue(start?.value);
+            break;
+          case 'month':
+            start?.setValue(moment(start!.value).startOf('month'));
+            end?.setValue(moment(start!.value).endOf('month'));
+            break;
+          case 'year':
+            start?.setValue(moment(start!.value).startOf('year'));
+            end?.setValue(moment(start!.value).endOf('year'));
+            break;
+        }
         this.myRange.setValue(res.range.value);
         this.radio = res.radio;
         this.oldRange.setValue(res.range.value);

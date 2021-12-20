@@ -33,6 +33,7 @@ export class AppComponent {
 
   getDate($event: IMyDatePickerOutput) {
     this.range = $event.range;
+    console.log(moment(this.range.start).format('YYYY-MM-DD'), moment(this.range.end).format('YYYY-MM-DD'));
     console.log($event);
   }
 }
