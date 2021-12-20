@@ -25,13 +25,15 @@ export class MyDatePickerComponent implements OnInit {
     start: new FormControl(),
     end: new FormControl()
   });;
-  radio: TotalRadioType = this.radioType;
-  oldRadio: TotalRadioType = this.radioType;
+  radio: TotalRadioType = 'day';
+  oldRadio: TotalRadioType = 'day';
 
   constructor(public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
+    this.radio = this.radioType;
+    this.oldRadio = this.radioType;
     // Если период не задан через @Input(), то задаем период текущий день
     if (!this.range) {
       this.range = {
