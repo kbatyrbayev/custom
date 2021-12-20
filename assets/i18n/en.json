@@ -1,0 +1,15 @@
+{
+  "DATEPICKER": {
+    "STEP": "Step",
+    "STEP1": "Select data depth:",
+    "STEP2": "Choose a display method:",
+    "TODAY": "Today {{val}}",
+    "DAY": "Day {{val}}",
+    "MONTH": "Month {{val}}",
+    "YEAR": "Year {{val}}",
+    "PERIOD": "Period {{val}}",
+    "PLACEHOLDER1": "Enter the date",
+    "PLACEHOLDER2": "Select from the list",
+    "NONE": "Not chosen"
+  }
+}
