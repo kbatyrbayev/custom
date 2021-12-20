@@ -13,6 +13,7 @@ import * as moment from 'moment';
 export class MyDatePickerComponent implements OnInit {
 
   @Input() pickerType: 'default' | 'total' = 'default';
+  @Input() radioType: TotalRadioType = 'day';
   @Input() range?: IMyDateRange;
   @Output() outputDate = new EventEmitter<IMyDatePickerOutput>();
 
@@ -24,8 +25,8 @@ export class MyDatePickerComponent implements OnInit {
     start: new FormControl(),
     end: new FormControl()
   });;
-  radio: TotalRadioType = 'period';
-  oldRadio: TotalRadioType = 'period';
+  radio: TotalRadioType = this.radioType;
+  oldRadio: TotalRadioType = this.radioType;
 
   constructor(public dialog: MatDialog) {
   }
