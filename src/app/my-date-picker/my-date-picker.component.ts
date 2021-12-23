@@ -3,7 +3,7 @@ import { TotalDatePickerComponent } from './total-date-picker/total-date-picker.
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DefaultDatePickerComponent } from './default-date-picker/default-date-picker.component';
-import { IMyDatePickerOutput, IMyDateRange, ITotalDateClose, TotalRadioType } from './date-picker.interface';
+import { IMyDatePickerOutput, IMyDateRange, ITotalDateClose, TotalDisplayType, TotalRadioType } from './date-picker.interface';
 import * as moment from 'moment';
 @Component({
   selector: 'app-my-date-picker',
@@ -27,6 +27,8 @@ export class MyDatePickerComponent implements OnInit {
   });;
   radio: TotalRadioType = 'day';
   oldRadio: TotalRadioType = 'day';
+  display: TotalDisplayType = 'day';
+  oldDisplay: TotalDisplayType = 'day';
 
   constructor(public dialog: MatDialog) {
   }
@@ -68,8 +70,10 @@ export class MyDatePickerComponent implements OnInit {
         left: `${left}px`,
         top: `${top}px`,
       },
-      data: { range: this.myRange, radio: this.radio }
+      data: { range: this.myRange, radio: this.radio, display: this.display }
     }).afterClosed().subscribe((res: ITotalDateClose) => {
+      console.log(res);
+      
       if (res) {
         const start = res.range.get('start');
         const end = res.range.get('end');
@@ -90,6 +94,8 @@ export class MyDatePickerComponent implements OnInit {
         this.radio = res.radio;
         this.oldRange.setValue(res.range.value);
         this.oldRadio = res.radio;
+        this.display = res.display!;
+        this.oldDisplay = res.display!;
         this.outputDate.emit({
           range: res.range.value,
           radio: res.radio,
@@ -98,6 +104,7 @@ export class MyDatePickerComponent implements OnInit {
       } else {
         this.myRange.setValue(this.oldRange?.value);
         this.radio = this.oldRadio;
+        this.display = this.oldDisplay;
       }
     });
   }

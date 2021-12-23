@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IMyDateRange, ITotalDateClose, TotalRadioType } from '../date-picker.interface';
+import { IMyDateRange, ITotalDateClose, TotalDisplayType, TotalRadioType } from '../date-picker.interface';
 
 @Component({
   selector: 'app-total-date-picker',
@@ -31,8 +31,9 @@ export class TotalDatePickerComponent implements OnInit {
   regularDate?: string;
 
   constructor(public dialogRef: MatDialogRef<TotalDatePickerComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: {range: FormGroup, radio: TotalRadioType}) {
+              @Inject(MAT_DIALOG_DATA) public data: {range: FormGroup, radio: TotalRadioType, display: TotalDisplayType}) {
     this.radioControl.setValue(this.data.radio);
+    this.displayTypeControl.setValue(this.data.display);
   }
 
   ngOnInit(): void {
