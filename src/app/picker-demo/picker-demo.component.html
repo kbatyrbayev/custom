@@ -1,0 +1,18 @@
+<div class="container">
+  <mat-select
+      [formControl]="langControl"
+      (selectionChange)="onSelectChange($event)"
+      placeholder="Выбрать из списка"
+      disableRipple="true">
+      <mat-option *ngFor="let lang of langs" [value]="lang">
+        {{lang}}
+      </mat-option>
+  </mat-select>
+  <app-my-date-picker [pickerType]="'total'" [radioType]="'month'" [range]="range" (outputDate)="getDate($event)"></app-my-date-picker>
+  <app-my-date-picker [range]="range" (outputDate)="getDate($event)"></app-my-date-picker>
+  <!-- <app-my-date-picker></app-my-date-picker> -->
+  Selected date:
+  <code>
+    {{range | showDatePicker:'period'}}
+  </code>
+</div>

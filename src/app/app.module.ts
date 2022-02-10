@@ -22,10 +22,18 @@ import { ShowDatePickerPipe } from './my-date-picker/show-date-picker.pipe';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TotalDatePickerComponent } from './my-date-picker/total-date-picker/total-date-picker.component';
 import { DefaultDatePickerComponent } from './my-date-picker/default-date-picker/default-date-picker.component';
+import { InfinScrollComponent } from './infin-scroll/infin-scroll.component';
+import { RouterModule, Routes } from '@angular/router';
+import { PickerDemoComponent } from './picker-demo/picker-demo.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
+const appRoutes: Routes = [
+  { path: '', component: PickerDemoComponent },
+  { path: 'infin', component: InfinScrollComponent },
+];
 
 @NgModule({
   declarations: [
@@ -37,10 +45,13 @@ export function createTranslateLoader(http: HttpClient) {
     PeriodPickerComponent,
     ShowDatePickerPipe,
     TotalDatePickerComponent,
-    DefaultDatePickerComponent
+    DefaultDatePickerComponent,
+    InfinScrollComponent,
+    PickerDemoComponent
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
