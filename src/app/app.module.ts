@@ -25,6 +25,7 @@ import { DefaultDatePickerComponent } from './my-date-picker/default-date-picker
 import { InfinScrollComponent } from './infin-scroll/infin-scroll.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PickerDemoComponent } from './picker-demo/picker-demo.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -72,7 +73,8 @@ const appRoutes: Routes = [
           deps: [HttpClient]
         }
       }
-    )
+    ),
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

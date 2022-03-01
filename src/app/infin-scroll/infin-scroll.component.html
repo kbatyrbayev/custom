@@ -1,1 +1,18 @@
-<p>infin-scroll works!</p>
+<h1 class="title well">
+  <!-- ngx-infinite-scroll v-{{nisVersion}} -->
+  <section>
+  <small>items: {{sum}}, now triggering scroll: {{direction}}</small>
+  </section>
+</h1>
+<div class="search-results"
+      infinite-scroll
+      [infiniteScrollDistance]="scrollDistance"
+      [infiniteScrollUpDistance]="scrollUpDistance"
+      [infiniteScrollThrottle]="throttle"
+      (scrolled)="onScrollDown($event)"
+      (scrolledUp)="onUp($event)"
+>
+  <p *ngFor="let i of array">
+    {{ i }}
+  </p>
+</div>
