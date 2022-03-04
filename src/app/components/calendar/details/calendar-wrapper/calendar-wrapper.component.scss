@@ -1,0 +1,74 @@
+@mixin flex-dir-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-wrap {
+  @include flex-dir-col;
+  width: 487px;
+  max-width: 816px;
+  height: 490px;
+  max-height: 574px;
+  background: #262936;
+  box-shadow: -6px -6px 24px rgba(30, 34, 48, 0.48), 8px 8px 22px rgba(30, 34, 48, 0.24), inset 1px 1px 1px rgba(30, 34, 48, 0.05), inset -1px -1px 4px rgba(30, 34, 48, 0.12);
+  border-radius: 12px;
+  color: #fff;
+  &__top {
+    display: flex;
+    border-bottom: 1px solid #53586D;
+    flex: 1;
+  }
+  &__bottom {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 24px;
+    height: 72px;
+  }
+  &__left {
+    @include flex-dir-col;
+    width: 160px;
+    border-right: 1px solid #53586D;
+    padding: 24px 0;
+  }
+  &__right {
+    flex: 1;
+  }
+  &__option {
+    height: 46px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(255, 255, 255, 0.9);
+    padding-left: 24px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &.active {
+      background: #233D3A;
+    }
+    &:hover {
+      background: rgba($color: #233D3A, $alpha: 0.5);
+    }
+  }
+  &__btn {
+    margin-left: 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    color: #fff;
+    border: none;
+    background: transparent;
+    height: 40px;
+    cursor: pointer;
+    &__accept {
+      background: #13AB53;
+      width: 140px;
+    }
+    &__cancel {
+      border: 1px solid #fff;
+      width: 103px;
+    }
+  }
+}

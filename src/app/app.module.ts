@@ -27,6 +27,8 @@ import { PeriodPickerComponent } from './components/my-date-picker/date-picker-t
 import { ShowDatePickerPipe } from './components/my-date-picker/show-date-picker.pipe';
 import { TotalDatePickerComponent } from './components/my-date-picker/total-date-picker/total-date-picker.component';
 import { DefaultDatePickerComponent } from './components/my-date-picker/default-date-picker/default-date-picker.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { CalendarWrapperComponent } from './components/calendar/details/calendar-wrapper/calendar-wrapper.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -51,7 +53,9 @@ const appRoutes: Routes = [
     DefaultDatePickerComponent,
     InfinScrollComponent,
     PickerDemoComponent,
-    NewDatePickerDemoComponent
+    NewDatePickerDemoComponent,
+    CalendarComponent,
+    CalendarWrapperComponent
   ],
   imports: [
     BrowserModule,

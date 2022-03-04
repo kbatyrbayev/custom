@@ -1,0 +1,21 @@
+<div class="c-wrap">
+  <div class="c-wrap__top">
+    <div class="c-wrap__left">
+      <div class="c-wrap__option" 
+           *ngFor="let option of options;" 
+           (click)="selectOption(option)" 
+           [class.active]="selectedOption?.id === option.id">
+        {{option?.name}}
+      </div>
+    </div>
+    <div class="c-wrap__right"></div>
+  </div>
+  <div class="c-wrap__bottom">
+    <button class="c-wrap__btn c-wrap__btn__cancel">
+      Отмена
+    </button>
+    <button class="c-wrap__btn c-wrap__btn__accept">
+      Выбрать
+    </button>
+  </div>
+</div>
