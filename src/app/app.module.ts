@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { MyDatePickerComponent } from './my-date-picker/my-date-picker.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
@@ -13,20 +12,21 @@ import { MatInputModule } from '@angular/material/input';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { MonthPickerComponent } from './my-date-picker/date-picker-types/month-picker.component';
-import { YearPickerComponent } from './my-date-picker/date-picker-types/year-picker.component';
-import { RegularPickerComponent } from './my-date-picker/date-picker-types/regular-picker.component';
-import { PeriodPickerComponent } from './my-date-picker/date-picker-types/period-picker.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { ShowDatePickerPipe } from './my-date-picker/show-date-picker.pipe';
 import { MatDialogModule } from '@angular/material/dialog';
-import { TotalDatePickerComponent } from './my-date-picker/total-date-picker/total-date-picker.component';
-import { DefaultDatePickerComponent } from './my-date-picker/default-date-picker/default-date-picker.component';
-import { InfinScrollComponent } from './infin-scroll/infin-scroll.component';
+import { InfinScrollComponent } from './components/infin-scroll/infin-scroll.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PickerDemoComponent } from './demos/picker-demo/picker-demo.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NewDatePickerDemoComponent } from './demos/new-date-picker-demo/new-date-picker-demo.component';
+import { MyDatePickerComponent } from './components/my-date-picker/my-date-picker.component';
+import { MonthPickerComponent } from './components/my-date-picker/date-picker-types/month-picker.component';
+import { YearPickerComponent } from './components/my-date-picker/date-picker-types/year-picker.component';
+import { RegularPickerComponent } from './components/my-date-picker/date-picker-types/regular-picker.component';
+import { PeriodPickerComponent } from './components/my-date-picker/date-picker-types/period-picker.component';
+import { ShowDatePickerPipe } from './components/my-date-picker/show-date-picker.pipe';
+import { TotalDatePickerComponent } from './components/my-date-picker/total-date-picker/total-date-picker.component';
+import { DefaultDatePickerComponent } from './components/my-date-picker/default-date-picker/default-date-picker.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
