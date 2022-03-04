@@ -24,15 +24,17 @@ import { TotalDatePickerComponent } from './my-date-picker/total-date-picker/tot
 import { DefaultDatePickerComponent } from './my-date-picker/default-date-picker/default-date-picker.component';
 import { InfinScrollComponent } from './infin-scroll/infin-scroll.component';
 import { RouterModule, Routes } from '@angular/router';
-import { PickerDemoComponent } from './picker-demo/picker-demo.component';
+import { PickerDemoComponent } from './demos/picker-demo/picker-demo.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NewDatePickerDemoComponent } from './demos/new-date-picker-demo/new-date-picker-demo.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 const appRoutes: Routes = [
-  { path: '', component: PickerDemoComponent },
+  { path: 'datePicker', component: PickerDemoComponent },
+  { path: 'newDatePicker', component: NewDatePickerDemoComponent },
   { path: 'infin', component: InfinScrollComponent },
 ];
 
@@ -48,7 +50,8 @@ const appRoutes: Routes = [
     TotalDatePickerComponent,
     DefaultDatePickerComponent,
     InfinScrollComponent,
-    PickerDemoComponent
+    PickerDemoComponent,
+    NewDatePickerDemoComponent
   ],
   imports: [
     BrowserModule,
