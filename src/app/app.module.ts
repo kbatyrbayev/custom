@@ -21,7 +21,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NewDatePickerDemoComponent } from './demos/new-date-picker-demo/new-date-picker-demo.component';
 import { MyDatePickerComponent } from './components/my-date-picker/my-date-picker.component';
 import { MonthPickerComponent } from './components/my-date-picker/date-picker-types/month-picker.component';
-import { YearPickerComponent } from './components/my-date-picker/date-picker-types/year-picker.component';
+import { YearPickerComponent2 } from './components/my-date-picker/date-picker-types/year-picker.component';
 import { RegularPickerComponent } from './components/my-date-picker/date-picker-types/regular-picker.component';
 import { PeriodPickerComponent } from './components/my-date-picker/date-picker-types/period-picker.component';
 import { ShowDatePickerPipe } from './components/my-date-picker/show-date-picker.pipe';
@@ -29,6 +29,8 @@ import { TotalDatePickerComponent } from './components/my-date-picker/total-date
 import { DefaultDatePickerComponent } from './components/my-date-picker/default-date-picker/default-date-picker.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { CalendarWrapperComponent } from './components/calendar/details/calendar-wrapper/calendar-wrapper.component';
+import { DatePickerComponent } from './components/calendar/details/date-picker/date-picker.component';
+import { YearPickerComponent } from './components/calendar/details/year-picker/year-picker.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -45,7 +47,7 @@ const appRoutes: Routes = [
     AppComponent,
     MyDatePickerComponent,
     MonthPickerComponent,
-    YearPickerComponent,
+    YearPickerComponent2,
     RegularPickerComponent,
     PeriodPickerComponent,
     ShowDatePickerPipe,
@@ -55,7 +57,9 @@ const appRoutes: Routes = [
     PickerDemoComponent,
     NewDatePickerDemoComponent,
     CalendarComponent,
-    CalendarWrapperComponent
+    CalendarWrapperComponent,
+    DatePickerComponent,
+    YearPickerComponent
   ],
   imports: [
     BrowserModule,

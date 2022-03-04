@@ -8,7 +8,14 @@
         {{option?.name}}
       </div>
     </div>
-    <div class="c-wrap__right"></div>
+    <div class="c-wrap__right">
+      <ng-container *ngIf="selectedOption?.id === 1">
+        <app-date-picker></app-date-picker>
+      </ng-container>
+      <ng-container *ngIf="selectedOption?.id === 2">
+        <app-year-picker></app-year-picker>
+      </ng-container>
+    </div>
   </div>
   <div class="c-wrap__bottom">
     <button class="c-wrap__btn c-wrap__btn__cancel">

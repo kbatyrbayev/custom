@@ -18,7 +18,7 @@ export const YEAR_MODE_FORMATS = {
 };
 
 @Component({
-  selector: 'app-year-picker',
+  selector: 'app-year-picker2',
   template: `
     <input [matDatepicker]="picker" placeholder="{{'DATEPICKER.PLACEHOLDER1' | translate}}" [formControl]="date">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -28,10 +28,10 @@ export const YEAR_MODE_FORMATS = {
   providers: [
     { provide: DateAdapter, useClass: CustomDateAdapter, deps: [MAT_DATE_LOCALE], },
     { provide: MAT_DATE_FORMATS, useValue: YEAR_MODE_FORMATS },
-    { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => YearPickerComponent), multi: true, },
+    { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => YearPickerComponent2), multi: true, },
   ]
 })
-export class YearPickerComponent implements OnInit {
+export class YearPickerComponent2 implements OnInit {
 
   @Input() date!: FormControl;
 
