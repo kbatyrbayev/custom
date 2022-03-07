@@ -1,0 +1,41 @@
+.c-dropdown {
+  position: relative;
+}
+
+.c-selected-month {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  span {
+    margin-right: 6px;
+  }
+  .c-arrow-bottom {
+    margin-bottom: 4px;
+  }
+}
+
+.c-list {
+  position: absolute;
+  top: 100%;
+  left: -15px;
+  padding: 8px 0px;
+  min-width: 68px;
+  max-width: 112px;
+  background: #262936;
+  border: 1px solid #53586D;
+  box-shadow: -6px -6px 24px rgba(30, 34, 48, 0.48), 8px 8px 22px rgba(30, 34, 48, 0.24), inset 1px 1px 1px rgba(30, 34, 48, 0.05), inset -1px -1px 4px rgba(30, 34, 48, 0.12);
+  border-radius: 12px;
+  &__item {
+    height: 30px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &.active {
+      background: rgba(19, 171, 83, 0.2);
+    }
+    &:hover {
+      background: rgba(19, 171, 83, 0.8);
+    }
+  }
+}
